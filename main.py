@@ -1,5 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
 
 def Parsing(keyword):
     Header = {
@@ -17,4 +20,20 @@ def Parsing(keyword):
     except:
         return 'error'
 
-print(Parsing(input('songname and artist')))
+@app.route('/', methods=['GET'])
+def notice():
+
+    return render_template('index.html')
+
+@app.route('/play', methods=['GET'])
+def index(): 
+    if request.method == 'GET':
+        songName = request.args.get("songName")
+        artist = request.args.get("artist")
+        data = Parsing(songName +" "+ artist)
+        print(request.form)
+        
+    return render_template('song.html', songName = data[0], artist = data[1] , albumArt = data[2])
+    
+if __name__ == "__main__":
+    app.run()
