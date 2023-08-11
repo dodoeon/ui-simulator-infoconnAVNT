@@ -1,40 +1,81 @@
 <!doctype html>
 <html>
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
     <style>
-        .back {animation: rotate_image 120s linear infinite;transform-origin: 50% 50%;}
-
+        body {font-family: 'SUIT Variable', sans-serif;}
+        .back {
+            animation: rotate_image 60s linear infinite;
+            transform-origin: 50% 50%;
+            z-index: 1;
+            position:absolute;
+            height: 2048px;
+            filter: blur(80px) contrast(1.5);
+            left: -1024px;
+            top: -768px;
+        
+        }
+            
         @keyframes rotate_image{
         100% {
                 transform: rotate(360deg);
             }
+            
         }
 
         .text_name{
-            font-family: 'Noto Sans KR', sans-serif;
-            font-weight: 700;
-            font-size: 33.5pt;
+            font-family: 'SUIT Variable', sans-serif;
+            font-weight: 800;
+            font-size: 32pt;
             color: white;
             text-align: center;
+            z-index: 3;
+            display: flex;
+            position:absolute;
+            margin: 0px;
+            top: 475px;
+            justify-content: center;
+            width: 512px;
         }
 
-        .text_title{
-            font-family: 'Noto Sans KR', sans-serif;
-            font-weight: 300;
-            font-size: 28pt;
+        .text_artist{
+            font-family: 'SUIT Variable', sans-serif;
+            font-weight: 200;
+            font-size: 22pt;
             color: white;
             text-align: center;
+            z-index: 3;
+            position:absolute;
+            margin: 0px;
+            top: 540px;
+            display: flex;
+            justify-content: center;
+            width: 512px;
+        }
+        
+        .src_type{
+            font-family: 'SUIT Variable', sans-serif;
+            font-weight: 200;
+            font-size: 22pt;
+            color: white;
+            z-index: 3;
+            position:fixed;
+            margin: 80px 0px 0px 0px;
+            display: flex;
+            justify-content: center;
+            width: 512px;
         }
     </style>
   <head>
   </head>
   <body>
     <div style="height: 720px; width: 1920px; margin: 50px; position: absolute;">
-        <img style="z-index: 10; position: absolute;" src="{{ url_for('static',filename='back.png') }}" alt="">
+        <img style="z-index: 2; position: absolute;" src="{{ url_for('static',filename='back.png') }}" alt="">
             <div style="height: 720px; width: 512px; position: absolute; top: 0px; right: 0px;">
-                <img class="back" style="z-index: 1; position:absolute; height: 2048px; filter: blur(137px); left: -1024px; top: -768px;" src="{{albumArt}}" alt="">
+                <img class="back"src="{{albumArt}}" alt="">
+                <h4 class="src_type">블루투스 뮤직</h4>
                 <img style="z-index: 5; position:absolute; height: 312px; top: 140px; left: 100px" src="{{albumArt}}" alt="">
-                <h3 class="text_name" style="z-index: 3; position:absolute;margin: 0px;font-size: 33.5pt;top: 480px;text-align: center;">{{songName}}</h3>
-                <h4 class="text_title" style="z-index: 3; position:absolute;margin: 0px;font-size: 28pt;top: 535px;text-align:center;">{{artist}}</h4>
+                <h3 class="text_name">{{songName}}</h3>
+                <h4 class="text_artist">{{artist}}</h4>
             </div>
 
     </div>
