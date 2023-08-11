@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <style>
-        .back {animation: rotate_image 60s linear infinite;transform-origin: 50% 50%;}
+        .back {animation: rotate_image 120s linear infinite;transform-origin: 50% 50%;}
 
         @keyframes rotate_image{
         100% {
@@ -31,7 +31,7 @@
     <div style="height: 720px; width: 1920px; margin: 50px; position: absolute;">
         <img style="z-index: 10; position: absolute;" src="{{ url_for('static',filename='back.png') }}" alt="">
             <div style="height: 720px; width: 512px; position: absolute; top: 0px; right: 0px;">
-                <img class="back" style="z-index: 1;position:absolute;height: 1024px;filter: blur(25px);left: -256px; top: -180px;" src="{{albumArt}}" alt="">
+                <img class="back" style="z-index: 1; position:absolute; height: 2048px; filter: blur(137px); left: -1024px; top: -768px;" src="{{albumArt}}" alt="">
                 <img style="z-index: 5; position:absolute; height: 312px; top: 140px; left: 100px" src="{{albumArt}}" alt="">
                 <h3 class="text_name" style="z-index: 3; position:absolute;margin: 0px;font-size: 33.5pt;top: 480px;text-align: center;">{{songName}}</h3>
                 <h4 class="text_title" style="z-index: 3; position:absolute;margin: 0px;font-size: 28pt;top: 535px;text-align:center;">{{artist}}</h4>
